@@ -1,0 +1,1 @@
+export type collectionType = 'carts' | 'orders'| 'users';
