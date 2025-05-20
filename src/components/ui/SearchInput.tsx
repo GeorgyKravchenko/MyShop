@@ -4,7 +4,7 @@ import { IProduct } from '@/types/product';
 import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image';
-import ButtonAddToCart from './ui/ButtonAddToCart';
+import ButtonAddToCart from './ButtonAddToCart';
 
 export const SearchInput = () => {
   const [onFocus, setOnFocus] = useState(false);
