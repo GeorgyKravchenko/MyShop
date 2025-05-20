@@ -8,6 +8,7 @@ import { addData } from '@/lib/firebase/addData'
 import IUser from '@/types/user'
 import { memo } from 'react'
 import { auth } from '@/lib/firebase/firebase.config'
+import { handlePasswordPower } from '@/utils/PasswordStrength'
 
 interface FormData {
   name: string
@@ -30,16 +31,7 @@ const SignupPage = () => {
 
     });
 
-  const handlePasswordPower = (password: string) => {
-    if (!password) return 0;
-    const strength = (
-      (password.length >= 8 ? 1 : 0) +
-      (/[A-Z]/.test(password) ? 1 : 0) +
-      (/\d/.test(password) ? 1 : 0) +
-      (/[!@#$%^&*-+=]/.test(password) ? 1 : 0)
-    );
-    return strength;
-  }
+  
   
 
   return (
