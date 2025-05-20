@@ -1,10 +1,10 @@
-import Sidebar from '@/components/Sidebar';
-import SkeletonLoader from '@/components/SkeletonLoader';
+import Sidebar from '@/components/ui/Sidebar';
+import SkeletonLoader from '@/components/ui/SkeletonLoader';
 import { IProduct } from '@/types/product';
 import dynamic from 'next/dynamic';
 import { memo, Suspense } from 'react';
 
-const ProductCard = dynamic(() => import('@/components/ProductCard'));
+const ProductCard = dynamic(() => import('@/components/products/ProductCard'));
 
 const CatalogView = ({
   filteredProducts,

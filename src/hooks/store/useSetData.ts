@@ -1,10 +1,8 @@
-import { getUser } from "@/lib/firebase/getData";
-import { onAuthStateChanged } from "firebase/auth";
-import {  useEffect, useState } from "react";
-import { auth } from "@/lib/firebase/firebase.config";
-import { useActions } from "./useAction";
-
-
+import { getDataById } from '@/lib/firebase/db/getData';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+import { auth } from '@/lib/firebase/firebase.config';
+import { collectionType } from '@/types/collection';
 
 /**
  * A custom hook to fetch and handle user-specific data from a specified collection.
@@ -25,11 +23,14 @@ import { useActions } from "./useAction";
  * @returns {boolean} The status of the data fetch operation.
  */
 
-export const useSetUser = (
+export const useSetData = <T>(
+  dataHandler: (data: Array<T>) => void,
+  collectionType: collectionType,
 ) => {
-    const {setUser}=useActions()
   const [userId, setUserId] = useState<string | null>(null);
-  const [dataFetchStatus, setDataFetchStatus] = useState<'pending' | 'fulfilled' | 'error'>('pending');
+  const [dataFetchStatus, setDataFetchStatus] = useState<'pending' | 'fulfilled' | 'error'>(
+    'pending',
+  );
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -43,17 +44,9 @@ export const useSetUser = (
       if (!userId) return;
 
       try {
-        const userData = await getUser(userId);
-        if (userData) {
-          setUser({
-            id: userData.id,
-            name: userData?.data.name || userData.name,
-            email: userData?.data.email || userData.email,
-            phone: userData?.data.phone || userData.phone,
-            description: userData?.data.description || userData.description,
-            createdAt: userData.createdAt?.toDate().toISOString(),
-            updatedAt: userData.updatedAt?.toDate().toISOString(),
-          });
+        const userData = await getDataById(collectionType, userId);
+        if (userData?.data) {
+          dataHandler(Object.values(userData.data));
           setDataFetchStatus('fulfilled');
         }
       } catch (error) {
@@ -67,4 +60,3 @@ export const useSetUser = (
 
   return dataFetchStatus;
 };
-

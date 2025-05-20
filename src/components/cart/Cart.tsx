@@ -1,12 +1,12 @@
-'use client'
-import CartPage from "@/components/CartPage"
-import { useActions } from "@/hooks/useAction";
-import { useSetData } from "@/hooks/useSetData";
-import { useTypedSelector } from "@/hooks/useTypedSelector"
-import { AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useState } from "react"
+'use client';
+import CartPage from '@/components/cart/CartPage';
+import { useActions } from '@/hooks/store/useAction';
+import { useSetData } from '@/hooks/store/useSetData';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { AnimatePresence } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
- const Cart = () => {
+const Cart = () => {
   const { setProducts } = useActions();
   useSetData(setProducts, 'carts');
   const cart = useTypedSelector((state) => state.cart);
@@ -55,11 +55,11 @@ import { useEffect, useRef, useState } from "react"
         )}
       </button>
       <AnimatePresence>
-          {isCartOpen && (
-            <div ref={cartRef}>
-              <CartPage handler={() => setIsCartOpen(false)} />
-            </div>
-          )}
+        {isCartOpen && (
+          <div ref={cartRef}>
+            <CartPage handler={() => setIsCartOpen(false)} />
+          </div>
+        )}
       </AnimatePresence>
     </div>
   );

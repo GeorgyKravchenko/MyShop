@@ -1,18 +1,18 @@
-'use client'
-import { useSearchProduct } from "@/hooks/useSearchProduct";
-import { IProduct } from "@/types/product";
-import { useEffect, useRef, useState } from "react";
-import {useForm } from "react-hook-form";
-import Image from "next/image";
-import ButtonAddToCart from "./ButtonAddToCart";
+'use client';
+import { useSearchProduct } from '@/hooks/useSearchProduct';
+import { IProduct } from '@/types/product';
+import { useEffect, useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import Image from 'next/image';
+import ButtonAddToCart from './ui/ButtonAddToCart';
 
 export const SearchInput = () => {
   const [onFocus, setOnFocus] = useState(false);
   const { register, watch } = useForm();
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
-  const ref=useRef<HTMLDivElement>(null)
-  const searchTerm = watch("search", "");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  const ref = useRef<HTMLDivElement>(null);
+  const searchTerm = watch('search', '');
   const { filteredData, isLoading, isSuccess } = useSearchProduct(debouncedSearchTerm);
   useEffect(() => {
     setProducts([]);
@@ -39,7 +39,7 @@ export const SearchInput = () => {
   }, []);
 
   return (
-    <div ref={ref} className="relative w-full flex justify-center" >
+    <div ref={ref} className="relative w-full flex justify-center">
       <form
         className="hidden flex-1 max-w-xl mx-4 lg:block"
         role="search"
@@ -47,8 +47,8 @@ export const SearchInput = () => {
       >
         <div className="flex gap-2">
           <input
-          onFocus={() => setOnFocus(true)}
-            {...register("search")}
+            onFocus={() => setOnFocus(true)}
+            {...register('search')}
             type="text"
             placeholder="Пошук товарів..."
             className="w-full px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-700 
@@ -69,7 +69,7 @@ export const SearchInput = () => {
       </form>
       {/* {isLoading && <div className="text-center mt-4">Завантаження...</div>} */}
 
-      {searchTerm !== "" && !isLoading && isSuccess && onFocus && products.length > 0 && (
+      {searchTerm !== '' && !isLoading && isSuccess && onFocus && products.length > 0 && (
         <div className="absolute top-full left-0 w-full bg-white dark:bg-slate-800 shadow-lg rounded-lg mt-2 z-50 max-h-60 overflow-y-auto no-scrollbar">
           {products.map((product) => (
             <div
@@ -88,9 +88,7 @@ export const SearchInput = () => {
                   <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
                     {product.title}
                   </h3>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    {product.price} $
-                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{product.price} $</p>
                 </div>
               </div>
               <div className="grow-0">

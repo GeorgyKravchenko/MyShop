@@ -1,9 +1,9 @@
-'use client'
+'use client';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import React from 'react';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
-import { useActions } from '@/hooks/useAction';
+import { useActions } from '@/hooks/store/useAction';
 import Link from 'next/link';
 
 interface CartPageProps {
@@ -24,13 +24,13 @@ const CartPage: React.FC<CartPageProps> = ({ handler }) => {
       <h2 className="text-xl font-bold border-b border-gray-200 dark:border-gray-700 pb-2 mb-4">
         Shopping cart
       </h2>
-      
+
       <div className="flex-1 overflow-y-auto space-y-4 no-scrollbar">
         <AnimatePresence>
           {cart.length === 0 ? (
-            <motion.p 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               className="text-gray-500 dark:text-gray-400"
             >
               The cart is empty
@@ -44,11 +44,11 @@ const CartPage: React.FC<CartPageProps> = ({ handler }) => {
                 key={item.id}
                 className="flex items-center space-x-4 border-b border-gray-200 dark:border-gray-700 pb-2"
               >
-                <div className='relative w-16 h-16'>
-                  <Image 
-                    src={item.image} 
-                    alt={item.title} 
-                    fill 
+                <div className="relative w-16 h-16">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
                     className="object-fill rounded"
                     sizes="64px"
                   />

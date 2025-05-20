@@ -1,8 +1,8 @@
-import { IProduct } from '@/types/product'
-import Image from 'next/image'
-import React from 'react'
-import ButtonAddToCart from './ButtonAddToCart'
-import { motion } from 'framer-motion'
+import { IProduct } from '@/types/product';
+import Image from 'next/image';
+import React from 'react';
+import ButtonAddToCart from '../ui/ButtonAddToCart';
+import { motion } from 'framer-motion';
 
 const ProductCard: React.FC<IProduct> = ({
   id,
@@ -34,7 +34,7 @@ const ProductCard: React.FC<IProduct> = ({
         <h2 className="text-lg font-semibold mb-2 line-clamp-2 text-gray-900 dark:text-white">
           {title}
         </h2>
-        
+
         <div className="flex-grow"></div>
 
         <div className="mb-4 space-y-3">
@@ -48,9 +48,11 @@ const ProductCard: React.FC<IProduct> = ({
               <span className="text-gray-500 dark:text-gray-400 text-sm">({rating.count})</span>
             </div>
           </div>
-          
-          <span className="inline-block text-sm px-3 py-1 rounded-full 
-                         bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300">
+
+          <span
+            className="inline-block text-sm px-3 py-1 rounded-full 
+                         bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300"
+          >
             {category}
           </span>
         </div>
@@ -58,7 +60,7 @@ const ProductCard: React.FC<IProduct> = ({
         <ButtonAddToCart product={{ id, title, price, category, description, image, rating }} />
       </div>
     </motion.article>
-  )
-}
+  );
+};
 
-export default ProductCard
+export default ProductCard;

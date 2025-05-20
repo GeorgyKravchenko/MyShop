@@ -1,15 +1,13 @@
-import { StatusBadge } from '@/app/profile/StatusBadge'
-import { IOrder } from '@/types/order'
-import Link from 'next/link'
-import React, { memo } from 'react'
+import { StatusBadge } from '@/components/ui/StatusBadge';
+import { IOrder } from '@/types/order';
+import Link from 'next/link';
+import React, { memo } from 'react';
 
 const OrderCard = ({ order }: { order: IOrder }) => {
   const total = order.products.reduce((sum, product) => sum + product.price, 0);
 
   return (
-    <div
-      className="border border-gray-200 dark:border-gray-700 rounded-xl p-6 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow"
-    >
+    <div className="border border-gray-200 dark:border-gray-700 rounded-xl p-6 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex flex-col md:flex-row justify-between mb-4 gap-4">
         <div className="mb-4 md:mb-0">
           <p className="text-lg font-semibold text-cyan-600 dark:text-cyan-400">
@@ -30,7 +28,9 @@ const OrderCard = ({ order }: { order: IOrder }) => {
                 className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700"
               >
                 <span className="text-gray-600 dark:text-gray-400">{product.title}</span>
-                <span className="text-cyan-600 dark:text-cyan-400">{product.price.toFixed(2)}$</span>
+                <span className="text-cyan-600 dark:text-cyan-400">
+                  {product.price.toFixed(2)}$
+                </span>
               </li>
             ))}
           </ul>
@@ -46,7 +46,9 @@ const OrderCard = ({ order }: { order: IOrder }) => {
             </div>
             <div className="flex justify-between pt-2 border-t border-gray-200 dark:border-gray-700">
               <span className="font-bold text-gray-700 dark:text-gray-300">Total:</span>
-              <span className="font-bold text-emerald-600 dark:text-emerald-400">{total.toFixed(2)}$</span>
+              <span className="font-bold text-emerald-600 dark:text-emerald-400">
+                {total.toFixed(2)}$
+              </span>
             </div>
           </div>
         </div>
@@ -61,4 +63,4 @@ const OrderCard = ({ order }: { order: IOrder }) => {
     </div>
   );
 };
-export default memo(OrderCard)
+export default memo(OrderCard);

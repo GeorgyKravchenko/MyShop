@@ -4,9 +4,9 @@ import { IOrder } from '@/types/order';
 import IUser from '@/types/user';
 import { SectionProfile } from '@/components/SectionProfile';
 import dynamic from 'next/dynamic';
-import SkeletonLoader from '@/components/SkeletonLoader';
+import SkeletonLoader from '@/components/ui/SkeletonLoader';
 
-const OrderCard = dynamic(() => import('@/components/OrderCard'));
+const OrderCard = dynamic(() => import('@/components/cart/OrderCard'));
 export const ProfileView = ({ orders, userdata }: { orders: IOrder[]; userdata: IUser }) => {
   return (
     <div className="max-w-4xl mx-auto p-4 bg-gray-50 dark:bg-gray-900 min-h-screen rounded-2xl transition-colors duration-300">
