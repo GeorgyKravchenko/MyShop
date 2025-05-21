@@ -13,6 +13,12 @@
     --foreground: #ededed;
   }
 }
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   color: var(--foreground);
@@ -25,6 +31,6 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

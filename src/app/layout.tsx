@@ -31,9 +31,9 @@ function RootLayout({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased `}>
         <StoreProvider>
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col min-h-full gap-10">
             <Header />
-            <div className="container mx-auto">{children}</div>
+            <div className="container flex-auto mx-auto ">{children}</div>
             <Footer />
           </div>
         </StoreProvider>
