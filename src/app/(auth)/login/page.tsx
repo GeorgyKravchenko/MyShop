@@ -50,6 +50,12 @@ const LoginPage = () => {
             className="w-full bg-gray-700 p-3 rounded border border-cyan-500 focus:border-cyan-300 focus:outline-none placeholder:text-gray-400"
             {...register('password', { required: true })}
           />
+          <Link
+            href="/forgot_password"
+            className="text-cyan-400 hover:text-cyan-300 transition-colors mt-1 block"
+          >
+            Забули пароль?
+          </Link>
         </div>
         {/* {errors.email || errors.password ? <span className="text-red-500 text-sm">Email or password is invalid</span> : null} */}
         {errorMessage ? <span className="text-red-500 text-sm">{errorMessage}</span> : null}
